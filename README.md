@@ -3,7 +3,7 @@
 A premium, interactive portfolio built with **Next.js 15**, **Framer Motion**, and **GSAP**. This project features a smooth-scrolling experience, dynamic animations, and a fully functional contact system.
 
 ## 🚀 Live Demo
-[your-project-name.vercel.app](https://your-project-name.vercel.app)
+[Mohammad Ashikur Rahman's Portfolio](https://portfolio-mohammad-ashikur-rahman.vercel.app)
 
 ## ✨ Key Features
 - **Modern Tech Stack**: Built with Next.js 15 (App Router) for high performance and SEO.

@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "../assets/logo.png";
 import { BsTwitterX } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import Link from "next/link";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -57,16 +60,25 @@ export default function Navbar() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="hidden lg:flex items-center gap-1 nav-glass px-4 py-2 rounded-full shadow-2xl"
         >
-          <a className="flex items-center gap-2 px-4 py-1.5 rounded-full nav-active text-slate-900 dark:text-white text-sm font-medium transition-all hover:bg-black/10 dark:hover:bg-white/10" href="#home">
+          <Link 
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all ${pathname === '/' ? 'nav-active text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'}`} 
+            href="/#home"
+          >
             <span className="material-symbols-outlined text-yellow-600 dark:text-yellow-500 scale-90" data-icon="home">home</span> Home
-          </a>
-          <a className="flex items-center gap-2 px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 text-sm font-medium transition-all" href="#qualification">
+          </Link>
+          <a className="flex items-center gap-2 px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 text-sm font-medium transition-all" href="/#qualification">
             <span className="material-symbols-outlined text-purple-600 dark:text-purple-400 scale-90" data-icon="school">school</span> Qualification
           </a>
-          <a className="flex items-center gap-2 px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 text-sm font-medium transition-all" href="#projects">
+          <a className="flex items-center gap-2 px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 text-sm font-medium transition-all" href="/#projects">
             <span className="material-symbols-outlined text-orange-600 dark:text-orange-400 scale-90" data-icon="work">work</span> Projects
           </a>
-          <a className="flex items-center gap-2 px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 text-sm font-medium transition-all" href="#contact">
+          <Link 
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all ${pathname === '/projects' ? 'nav-active text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'}`} 
+            href="/projects"
+          >
+            <span className="material-symbols-outlined text-blue-600 dark:text-blue-400 scale-90" data-icon="view_list">view_list</span> All Projects
+          </Link>
+          <a className="flex items-center gap-2 px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 text-sm font-medium transition-all" href="/#contact">
             <span className="material-symbols-outlined text-pink-600 dark:text-pink-400 scale-90" data-icon="send">send</span> Say Hello
           </a>
         </motion.div>

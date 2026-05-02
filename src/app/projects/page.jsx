@@ -1,15 +1,10 @@
 "use client";
 
-import { useRef } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { FaGithub } from "react-icons/fa6";
 
 const projects = [
   {
@@ -19,6 +14,7 @@ const projects = [
     tagColor: "text-secondary-fixed",
     liveLink: "https://tile-canvas.vercel.app/",
     github: "https://github.com/arRahat129/tile-canvas",
+    description: "A creative canvas for tile-based designs and patterns."
   },
   {
     title: "KeenKeeper",
@@ -27,6 +23,7 @@ const projects = [
     tagColor: "text-primary",
     liveLink: "https://assignment07-arrahat-kohl.vercel.app/",
     github: "https://github.com/arRahat129/assignment07-ar_rahat",
+    description: "A smart task and note management application."
   },
   {
     title: "Dragon News",
@@ -35,67 +32,36 @@ const projects = [
     tagColor: "text-tertiary",
     liveLink: "https://dragon-news-orpin-eight.vercel.app/category/01",
     github: "https://github.com/arRahat129/dragon-news",
+    description: "A dynamic news portal with categorized content."
   }
+  // Add more projects here if needed
 ];
 
-export default function Projects() {
-  const containerRef = useRef(null);
-  const headerRef = useRef(null);
-  const gridRef = useRef(null);
-
-  useGSAP(() => {
-    // Header reveal
-    if (headerRef.current) {
-      gsap.from(headerRef.current.children, {
-        opacity: 0,
-        y: 20,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 85%",
-        }
-      });
-    }
-
-    // Grid items staggered entrance
-    if (gridRef.current) {
-      gsap.from(gridRef.current.children, {
-        opacity: 0,
-        y: 50,
-        scale: 0.95,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: "top 80%",
-        }
-      });
-    }
-  }, { scope: containerRef });
-
+export default function ProjectsPage() {
   return (
-    <section ref={containerRef} className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden" id="projects">
-      <div ref={headerRef} className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-        <div>
-          <h2 className="font-headline-lg text-headline-lg text-on-surface mb-2">Featured Projects</h2>
-          <p className="text-outline">Crafted with precision and performance in mind.</p>
+    <>
+      <Navbar />
+      <motion.main 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto min-h-screen relative hero-glow"
+      >
+        <div className="mb-16">
+          <h1 className="font-headline-lg text-headline-lg text-on-surface mb-4">All My Projects</h1>
+          <p className="text-outline text-lg max-w-2xl">
+            A comprehensive collection of my work, ranging from web applications to creative experiments.
+          </p>
         </div>
-        <Link href={'/projects'}>
-          <button className="font-label-caps text-label-caps text-secondary flex items-center gap-2 group hover:text-secondary-fixed transition-colors">
-            VIEW ALL WORK <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-          </button>
-        </Link>
-      </div>
 
-      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <div key={index} className="h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
             <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="glass group rounded-2xl overflow-hidden flex flex-col h-full border border-black/10 dark:border-white/10"
             >
               <div className="h-48 overflow-hidden">
@@ -109,7 +75,8 @@ export default function Projects() {
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="font-headline-md text-headline-md text-on-surface mb-3">{project.title}</h3>
+                <h3 className="font-headline-md text-headline-md text-on-surface mb-2">{project.title}</h3>
+                <p className="text-outline text-sm mb-4 line-clamp-2">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, tagIndex) => (
@@ -137,9 +104,10 @@ export default function Projects() {
                 </div>
               </div>
             </motion.div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </motion.main>
+      <Footer />
+    </>
   );
 }
