@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mohammad Ashikur Rahman | Portfolio
 
-## Getting Started
+A premium, interactive portfolio built with **Next.js 15**, **Framer Motion**, and **GSAP**. This project features a smooth-scrolling experience, dynamic animations, and a fully functional contact system.
 
-First, run the development server:
+## 🚀 Live Demo
+[your-project-name.vercel.app](https://your-project-name.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Key Features
+- **Modern Tech Stack**: Built with Next.js 15 (App Router) for high performance and SEO.
+- **Fluid Animations**: Smooth scrolling via **Lenis** and interactive UI components powered by **Framer Motion** and **GSAP**.
+- **Contact System**: Fully functional contact form integrated with the **Resend API** for direct email delivery.
+- **Premium Design**: Sleek dark mode aesthetics with custom cursor and micro-interactions.
+- **Dynamic Content**: Auto-cycling role titles and real-time statistics counters.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Built With
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://gsap.com/)
+- **Email**: [Resend](https://resend.com/)
+- **Scrolling**: [Lenis](https://lenis.darkroom.engineering/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- Node.js 18.x or later
+- A Resend API Key (for the contact form)
 
-## Learn More
+### Installation
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/arRahat129/portfolio.git
+   cd portfolio
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Set up Environment Variables:**
+   Create a `.env.local` file in the root directory and add your Resend API Key:
+   ```env
+   RESEND_API_KEY=your_resend_api_key_here
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. **Open the project:**
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ☁️ Deployment
+This project is optimized for [Vercel](https://vercel.com).
+To deploy:
+1. Push your code to GitHub.
+2. Connect your repository to Vercel.
+3. Add the `RESEND_API_KEY` to your Vercel project's **Environment Variables**.
+4. Deploy!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+Built with ❤️ by [Mohammad Ashikur Rahman](https://github.com/arRahat129)
